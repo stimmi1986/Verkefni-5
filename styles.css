@@ -88,14 +88,13 @@ h3 {
   margin-bottom: var(--spacing);
   font-family: var(--font-family-heading);
 }
+
 h2{
   padding: 0 var(--offset) 0 var(--offset);
 }
 
 .lineUp{
-  max-width: calc(var(--max-width) + (2* var(--offset)));
   padding: 0 var(--offset) 0 var(--offset);
-
 }
 
 a {
@@ -121,13 +120,12 @@ img {
 /* Layout */
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
   gap: var(--spacing);
   
   min-height: 100vh;
   animation: fade var(--transition-time-long) var(--transition-timing-function);
 }
+
 
 @keyframes fade {
 
@@ -138,10 +136,10 @@ img {
 /** Haus **/
 
 .header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
   gap: var(--spacing);
+  
+  align-items: center;
 
   border-bottom: var(--border-large) solid var(--color-gold);
 
@@ -150,9 +148,8 @@ img {
 }
 
 .header header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  text-align: center;
 }
 
 /** Valmynd **/
@@ -185,28 +182,27 @@ img {
   
   max-width: calc(var(--max-width) + (2* var(--offset)));
 }
-.main-table {
-  display: grid;
-  gap: var(--spacing);
-
-  
-  max-width: calc(var(--max-width) + (2* var(--offset)));
-}
 
 /** Fótur **/
 
-.footer {
-  display: flex;
-  justify-content: center;
-  gap: var(--spacing);
 
-  padding: var(--spacing);
+.fc{
+  width: 100vw;
+
   border-top: var(--border-large) solid var(--color-gold);
-
   background-color: var(--color-dark);
   color: var(--color-gold-light);
+}
 
-  text-align: center;
+.footer {
+  display: grid;
+  gap: var(--spacing);
+  justify-items: center;
+
+  padding: var(--vertical-space);
+  margin: 0 auto;
+
+  max-width: calc(var(--max-width) + (2* var(--offset)));
 }
 
 .footer ul {
@@ -220,10 +216,9 @@ img {
   
   column-gap: var(--gutter);
   row-gap: calc(var(--spacing) * 2);
-  justify-content: center;
+
   margin-bottom: calc(var(--spacing) * 2);
   margin: var(--offset);
-  max-width: 100%;
 }
 
 .boxes .box {
@@ -251,7 +246,6 @@ img {
 }
 
 .boxes .box img {
-
   max-height: 400px;
 
   object-fit: cover;
@@ -280,26 +274,36 @@ img {
   transition-timing-function:var(--transition-timing-function);
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (min-width: 500px) {
   .boxes {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .footer {
     grid-template-columns: repeat(1, 1fr);
   }
 }
 
-@media screen and (min-width: 501px) and (max-width: 999px) {
+@media only screen and (min-width: 501px) and (max-width: 999px) {
   .boxes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer{
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media screen and (min-width: 1000px) {
+@media only screen and (min-width: 1000px) {
   .boxes {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .footer{
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
  
-
-
 /* Opnunartími */
 
 dt {
@@ -333,6 +337,7 @@ table tbody tr:nth-child(2n + 1) {
 /* Pöntunarform */
 
 fieldset {
+
   border: var(--border-small) solid var(--color-dark);
 }
 
